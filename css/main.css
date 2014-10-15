@@ -4,9 +4,35 @@
    Author's custom styles
    ========================================================================== */
 
+/* ==========================================================================
+   General
+   ========================================================================== */
 
+*{
+	font-family: "Alright";
+}
 
+.center{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+	display: block;
+}
 
+.right{
+	text-align: right;
+	float: right;
+}
+
+.left{
+	text-align: left;
+	float: left;
+}
+
+.fill{
+	width: 100% !important;
+}
 
 #fullscreen-background{
 	position: absolute;
@@ -26,12 +52,115 @@
 	height: 2600px;
 }
 
+@font-face {
+    font-family: "Alright";
+    src: url("../fonts/AlrightSans-Medium.woff") format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Alright";
+    src: url("../fonts/AlrightSans-Thin.woff") format('woff');
+    font-weight: thin;
+}
+
+@font-face {
+    font-family: "Alright";
+    src: url("../fonts/AlrightSans-Regular.woff") format('woff');
+    font-weight: normal;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
+#main-nav{
+	background-color: #fff;
+	background-image: none;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 0px;
+	z-index: 1001;
+}
+
+#main-nav.isStuck{
+	width: 100%;
+}
+
+#main-nav .navbar-nav > li > a{
+	color: #808284;
+	border-bottom: 3px solid #fff;
+}
+
+#main-nav .navbar-nav > li > a:hover{
+	border-bottom: 3px solid #808284;
+}
+
+#main-nav .navbar-nav > li.active > a{
+	border-bottom: 3px solid #808284;
+	background-color: #fff;
+	background-image: none;
+	box-shadow: none;
+}
+
+#main-nav .navbar-nav > li{
+	padding-right: 40px;
+}
+
+#main-nav .navbar-nav > li:last-child{
+	padding-right: 0px;
+}
+
+#logo-nav{
+	width: 250px;
+	padding-top: 3px;
+}
+
+/* ==========================================================================
+   Intro
+   ========================================================================== */
+#foto-intro{
+	background-image: url(../img/home-1.jpg);
+	background-size: cover;
+	background-position: center center;
+	width: 100%;
+	height: 100%;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media only screen and (max-width: 1200px){
+
+	#main-nav .navbar-nav > li{
+		padding-right: 30px;
+	}
+
+}
 
 
+@media only screen and (max-width: 992px){
 
+	#main-nav .navbar-nav > li{
+		padding-right: 0px;
+	}
 
+	#logo-nav{
+		width: 200px;
+		padding-top: 7px;
+	}
 
+	#main-nav .navbar-nav > li > a{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 
+	#main-nav .navbar-nav > li.active > a,
+	#main-nav .navbar-nav > li > a:hover{
+		border-bottom: 3px solid #fff;
+	}
+
+}
 
 
 
