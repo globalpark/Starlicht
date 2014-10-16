@@ -37,7 +37,7 @@
 }
 
 #fullscreen-background{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -78,6 +78,27 @@
 
 .bold{
 	font-family: "Alright-Bold";
+}
+
+/* ==========================================================================
+   Splash
+   ========================================================================== */
+#logo-intro img{
+	width: 400px;
+}
+
+#logo-intro{
+	margin-top: 100px;
+}
+
+#entrar{
+	width: 100%;
+	color: #808284;
+	margin-top: 30px;
+}
+
+#entrar a{
+	color: #808284;
 }
 
 /* ==========================================================================
