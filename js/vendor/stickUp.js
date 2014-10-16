@@ -97,9 +97,9 @@ function($) {
 
 			if(vartop < varscroll + topMargin){
 				$('.stuckMenu').addClass('isStuck');
-				$('.stuckMenu').next().closest('div').css({
+				/*$('.stuckMenu').next().closest('div').css({
 					'margin-top': stickyHeight + stickyMarginB + currentMarginT + 'px'
-				}, 10);
+				}, 10); */
 				$('.stuckMenu').css("position","fixed");
 				$('.isStuck').css({
 					top: '0px'
@@ -110,9 +110,9 @@ function($) {
 
 			if(varscroll + topMargin < vartop){
 				$('.stuckMenu').removeClass('isStuck');
-				$('.stuckMenu').next().closest('div').css({
+				/*$('.stuckMenu').next().closest('div').css({
 					'margin-top': currentMarginT + 'px'
-				}, 10);
+				}, 10); */
 				$('.stuckMenu').css("position","relative");
 			};
 

@@ -18,7 +18,7 @@
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body data-spy="scroll" data-target="#main-nav" data-offset="94">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -52,9 +52,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">QUIÉNES SOMOS</a></li>
-                <li><a href="#">MARCAS</a></li>
-                <li><a href="#">PROYECTOS</a></li>
+                <li><a href="#intro">QUIÉNES SOMOS</a></li>
+                <li><a href="#marcas">MARCAS</a></li>
+                <li><a href="#proyectos">PROYECTOS</a></li>
                 <li><a href="#">PRENSA</a></li>
                 <li><a href="#">CONTACTO</a></li>
               </ul>
@@ -64,8 +64,120 @@
 
         <!-- Intro -->
         <section id="intro">
+
             <div id="foto-intro" class="container-fluid">
 
+                <div id="container-quienes" class="container">
+
+                    <div class="row">
+                        <div id="titulo-quienes" class="col-xs-6 right">
+                            <h1 class="thin">QUIÉNES SOMOS</h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="texto-quienes" class="col-xs-7 right">
+                            <p class="thin">STARLICHT Iluminación es una empresa con distribución exclusiva de las marcas SWAREFLEX, LTS Y BARTENBACH, ofreciendo a nuestros clientes la mas alta calidad en tecnología Alemana y Austriaca.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section><!-- /.Intro -->
+
+        <!-- Marcas -->
+        <section id="marcas">
+            
+            <div class="container thin">
+                <div class="row">
+
+                    <div class="marca col-sm-6 col-xs-12">
+                        <div class="foto-marca" style="background-image: url(img/marcas-swareflex.jpg)">
+                            <div class="titulo-marca thin">
+                                <h2>SWAREFLEX</h2>
+                                
+                            </div>
+                            <div class="texto-marca hidden">
+                                <p class="thin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <a href="#" class="">Ver Proyectos</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="marca col-sm-6 col-xs-12">
+                        <div class="foto-marca" style="background-image: url(img/marcas-mk.jpg)">
+                            <div class="titulo-marca thin">
+                                <h2>MK</h2>
+                            </div>
+                            <div class="texto-marca hidden">
+                                <p class="thin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <a href="#" class="">Ver Proyectos</a> 
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="marca col-sm-6 col-xs-12">
+                        <div class="foto-marca" style="background-image: url(img/marcas-lts.jpg)">
+                            <div class="titulo-marca thin">
+                                <h2>LTS</h2>
+                            </div>
+                            <div class="texto-marca hidden">
+                                <p class="thin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+                                <a href="#" class="">Ver Proyectos</a>   
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="marca col-sm-6 col-xs-12">
+                        <div class="foto-marca" style="background-image: url(img/marcas-bartenbach.jpg)">
+                            <div class="titulo-marca thin">
+                                <h2>BARTENBACH</h2>
+                            </div>
+                            <div class="texto-marca hidden">
+                                <p class="thin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+                                <a href="#" class="">Ver Proyectos</a>   
+                            </div>
+                        </div>                        
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!-- /.Marcas -->
+
+        <!-- Proyectos -->
+        <section id="proyectos">
+            <div class="container">
+                <div class="row">
+                    <ul id="proyectos-nav" class="nav nav-pills nav-justified">
+                        <li class="active"><a href="#">SWAREFLEX</a></li>
+                        <li><a href="#">MK</a></li>
+                        <li><a href="#">LTS</a></li>
+                        <li><a href="#">BARTENBACH</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -78,6 +190,8 @@
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/jquery.backstretch.js"></script>
         <script src="js/vendor/stickUp.min.js"></script>
+        <script src="js/vendor/jquery.scrollTo.min.js"></script>
+        <script src="js/vendor/jquery.localScroll.min.js"></script>
         <script src="js/main.js"></script>
 
         <script type="text/javascript">
