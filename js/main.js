@@ -7,9 +7,9 @@ $(document).ready( function(){
 	$('#foto-intro').height( height - $('#main-nav').height() - 42 );
 
 	if( height < 740){
-		$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .2 + "px")
-	}else{
 		$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .4 + "px")
+	}else{
+		$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .6 + "px")
 	}
 
 	if(width > 1900){
@@ -23,7 +23,7 @@ $(document).ready( function(){
 	});
 
 	$('#main-nav').localScroll({ duration: 'slow', offset: -94});
-	$('#proyectos-link').localScroll({ duration: 'slow', offset: -44});
+	$('#proyectos-link').localScroll({ duration: 'slow', offset: -94});
 
 	$('.texto-marca').height( ( $('.marca').height() - $('.titulo-marca').height() ) );
 
@@ -32,11 +32,6 @@ $(document).ready( function(){
 } );
 
 $(document).on('scroll', function(){
-	if( $('#main-nav').hasClass('isStuck') ){
-		$('#intro').css("margin-top","94px");
-	}else{
-		$('#intro').css("margin-top", "0px" );
-	}
 });
 
 $(window).resize( function(){
@@ -48,9 +43,9 @@ $(window).resize( function(){
 	$('#foto-intro').height( height - $('#main-nav').height() - 42 );
 
 	if( height < 740){
-		$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .2 + "px")
-	}else{
 		$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .4 + "px")
+	}else{
+		$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .6 + "px")
 	}
 
 	if(width > 1900){
@@ -64,11 +59,16 @@ $(window).resize( function(){
 	});
 
 	$('#main-nav').localScroll({ duration: 'slow', offset: -94});
+	$('#proyectos-link').localScroll({ duration: 'slow', offset: -94});
+
+	$('.texto-marca').height( ( $('.marca').height() - $('.titulo-marca').height() ) );
+
+	$('.proyecto').height( height - ( $('#main-nav').height() + $('#proyectos-nav').height() ) - 42 );
 	
 } );
 
 jQuery(function($) {
 	$(document).ready( function() {
-	  //$('#main-nav').stickUp();
+	  $('#main-nav').stickUp();
 	});
 });
