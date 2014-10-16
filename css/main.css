@@ -166,7 +166,7 @@
 
 .marca{
 	margin-bottom: 30px;
-	height: 300px;
+	height: 350px;
 }
 
 #marcas .container .row{
@@ -177,6 +177,8 @@
 .foto-marca{
 	width: 100%;
 	height: 100%;
+	background-size: cover;
+	background-position: center center;
 }
 
 .titulo-marca{
@@ -210,13 +212,51 @@
 /* ==========================================================================
    Proyectos
    ========================================================================== */
-#proyectos .container{
-	margin-top: 60px;
+#proyectos{
+	color: #fff;
+	background-color: #eee;
+}
+
+
+#proyectos .container .row{
+}
+
+#proyectos-nav{
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
 
 #proyectos-nav li a{
 	color: #808284;
-	background-color: #fff;
+	background-color: #eee;
+	border-bottom: 2px solid #eee;
+	border-radius: 0px;
+}
+
+#proyectos-nav li a:hover{
+	color: #808284;
+	background-color: #eee;
+	border-bottom: 2px solid #808284;
+}
+
+.proyecto{
+	width: 100%;
+	background-size: cover;
+	background-position: center center;
+}
+
+.container-proyecto .row{
+	margin-top: 10px !important;
+}
+
+.titulo-proyecto{
+	font-size: 55px;
+}
+
+.texto-proyecto{
+	background-color: rgba(0, 0, 0, 0.6);
+	padding: 20px 20px;
+	text-align: left;
 }
 
 /* ==========================================================================
