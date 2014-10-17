@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/marginizer.css">
         <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -32,7 +33,7 @@
 
           <div id="entrar" class="center">
               <h3 class="center thin">ENTRA</h3>
-              <a href="#main-nav"><i class="fa fa-angle-down fa-3x center"></i></a>
+              <a href="#intro"><i class="fa fa-angle-down fa-3x center"></i></a>
           </div>
           
         </div>
@@ -60,7 +61,7 @@
                 <li><a href="#marcas">MARCAS</a></li>
                 <li id="proyectos-link"><a href="#proyectos">PROYECTOS</a></li>
                 <li><a href="#prensa">PRENSA</a></li>
-                <li><a href="#">CONTACTO</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -282,23 +283,58 @@
         <section id="prensa">
             <div class="container-fluid">
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <img src="img/prensa-1.jpg" class="img-responsive">
+                    <a href="img/prensa1.jpg" class="fancybox" rel="group"><img src="img/prensa-1.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <img src="img/prensa-2.jpg" class="img-responsive">
+                    <a href="img/prensa2.jpg" class="fancybox" rel="group"><img src="img/prensa-2.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <img src="img/prensa-3.jpg" class="img-responsive">
+                    <a href="img/prensa3.jpg" class="fancybox" rel="group"><img src="img/prensa-3.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <img src="img/prensa-4.jpg" class="img-responsive">
+                    <a href="img/prensa4.jpg" class="fancybox" rel="group"><img src="img/prensa-4.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <img src="img/prensa-5.jpg" class="img-responsive">
+                    <a href="img/prensa5.jpg" class="fancybox" rel="group"><img src="img/prensa-5.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <img src="img/prensa-1.jpg" class="img-responsive">
+                    <a href="img/prensa1.jpg" class="fancybox" rel="group"><img src="img/prensa-1.jpg" class="img-responsive"></a>
                 </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div id="foto-contacto" class="hidden">
+            </div>
+            
+            <div class="container">
+
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h1 class="center">Envíanos tu correo y te escribimos:</h1>
+                </div>
+
+                <div id="contacto-form" class="col-sm-6 col-sm-offset-3 col-xs-12">
+                    <form action="<?php the_permalink(); ?>" method="post">
+                        <div class="input-group input-group-lg">
+                            <input id="email" type="text" name="message_email" value="" placeholder="email" class="form-control">
+                            <input type="hidden" name="submitted" value="1">
+                            <span class="input-group-btn">
+                                <button  id="search-btn" type="submit" class="btn btn-primary"><i class="fa fa-angle-right"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12 thin">
+                    <h3 class="center">Sierra de Mimbres 37</h3>
+                    <h3 class="center">Lomas de Chapultepec</h3>
+                    <h3 class="center">Miguel Hidalgo</h3>
+                    <h3 class="center m-top40">Ciudad de México</h3>
+                    <h3 class="center m-top40">(55) 9243 3586</h3>
+                    <h3 class="center">(55) 5043 3708</h3>
+                    <a href="mailto:info@starlichtmexico.com"><h3 class="center m-top40 thin">info@starlichtmexico.com</h3></a>
+                </div>
+
             </div>
         </section>
 
@@ -312,6 +348,7 @@
         <script src="js/vendor/stickUp.min.js"></script>
         <script src="js/vendor/jquery.scrollTo.min.js"></script>
         <script src="js/vendor/jquery.localScroll.min.js"></script>
+        <script src="js/fancybox/jquery.fancybox.js"></script>
         <script src="js/main.js"></script>
 
         <script type="text/javascript">
@@ -324,6 +361,7 @@
 
             $(document).ready( function(){
                 //$('#main-nav').stickUp();//
+                $('.fancybox').fancybox();
             } );
 
         </script>

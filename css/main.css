@@ -51,7 +51,6 @@
 	position: relative;
 	background-color: white;
 	margin-top: 700px;
-	height: 3000px;
 }
 
 @font-face {
@@ -289,6 +288,33 @@
 	text-align: left;
 }
 
+
+/* ==========================================================================
+   Contacto
+   ========================================================================== */
+#contacto{
+	padding-top: 40px;
+	padding-bottom: 40px;
+	color: #808284;
+}
+
+#foto-contacto{
+	width: 100%;
+	height: 300px;
+	background-size: cover;
+	background-position: center center;
+	background-image: url(../img/home-1.jpg)
+}
+
+#contacto-form{
+	margin-top: 20px;
+}
+
+#contacto a{
+	color: #808284;
+}
+
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -328,6 +354,15 @@
 	}
 
 }
+
+@media only screen and (max-width: 768px){
+	#logo-intro img{
+		width: 250px;
+	}
+}
+
+
+
 
 
 
