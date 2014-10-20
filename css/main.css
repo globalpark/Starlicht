@@ -147,13 +147,19 @@
 	padding-top: 3px;
 }
 
+.affix{
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
 /* ==========================================================================
    Intro
    ========================================================================== */
 #foto-intro{
 	background-image: url(../img/home-1.jpg);
 	background-size: cover;
-	background-position: center center;
+	background-position: top center;
 	width: 100%;
 	height: 100%;
 	color: #fff;
@@ -336,6 +342,15 @@
 	#logo-nav{
 		width: 200px;
 		padding-top: 7px;
+	}
+
+	#entrar{
+		margin-top: 0px;
+	}
+
+	#entrar h3{
+		margin-top: 10px;
+		margin-bottom: 5px;
 	}
 
 	#main-nav .navbar-nav > li > a{
