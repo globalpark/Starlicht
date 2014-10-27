@@ -374,6 +374,14 @@
 	#logo-intro img{
 		width: 250px;
 	}
+
+	.marca{
+		height: 400px;
+	}
+
+	.texto-marca p{
+		font-size: 13px;
+	}
 }
 
 
