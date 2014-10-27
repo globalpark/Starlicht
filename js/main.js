@@ -1,7 +1,5 @@
 flag = 0;
 
-
-
 function actualiza(){
 	$(document).ready( function(){
 
@@ -43,7 +41,6 @@ function actualiza(){
 		$('#proyectos-link').localScroll({ duration: 'slow', offset: -94});
 
 		//-----AJUSTES DE TAMAÑO (por si la cagué con algún ajuste) ----//
-		$('.texto-marca').height( ( $('.marca').height() - $('.titulo-marca').height() ) );
 		$('.proyecto').height( height - ( $('#main-nav').height() + $('#proyectos-nav').height() ) - 42 );
 
 		if( $('#foto-intro').height() < $('#container-quienes').height() ){
@@ -52,6 +49,12 @@ function actualiza(){
 
 		if( $('.proyecto').height() < $('.titulo-proyecto').height() ){
 			$('.proyecto').height( $('.titulo-proyecto').height()*1.2 );
+		}
+
+		if( ($('.texto-marca').height() + $('.titulo-marca').height()) > $('.marca').height() ){
+			$('.marca').height( $('.titulo-marca').height() + $('.texto-marca').height() );
+		}else{
+			$('.texto-marca').height( ( $('.marca').height() - $('.titulo-marca').height() ) );
 		}
 
 	} );
