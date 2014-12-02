@@ -3,10 +3,11 @@
 
 add_theme_support( 'post-thumbnails' ); 
 add_image_size( 'Prensa', 600, 450, true );	
+add_image_size( 'Marca', 1000, 1000, true );	
 
 //Hacer imagenes responsivas
 function bootstrap_responsive_images( $html ){
-  $classes = 'img-responsive'; // separated by spaces, e.g. 'img image-link'
+  $classes = 'img-responsive center'; // separated by spaces, e.g. 'img image-link'
 
   // check if there are already classes assigned to the anchor
   if ( preg_match('/<img.*? class="/', $html) ) {
@@ -63,5 +64,19 @@ add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 }
 
 add_action( 'wp_footer', 'wpstarlicht_scripts');
+
+
+// Menús //
+
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'main-menu' => __( 'Main Menu' ),
+      'secondary-menu' => __( 'Secondary Menu' )
+    )
+  );
+}
+add_action( 'init', 'register_my_menus' );
+
 
 ?>

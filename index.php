@@ -55,14 +55,16 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
+
             <div class="collapse navbar-collapse" id="navbar-collapse">
-              <ul class="nav navbar-nav navbar-right">
+            <?php wp_nav_menu( array( 'theme_location' => 'main-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
+              <!--<ul class="nav navbar-nav navbar-right">
                 <li><a href="#intro">QUIÉNES SOMOS</a></li>
                 <li><a href="#marcas">MARCAS</a></li>
                 <li id="proyectos-link"><a href="#proyectos">PROYECTOS</a></li>
                 <li><a href="#prensa">PRENSA</a></li>
                 <li><a href="#contacto">CONTACTO</a></li>
-              </ul>
+              </ul>-->
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav><!-- /.Navbar -->
@@ -98,54 +100,43 @@
             <div class="container thin">
                 <div class="row">
 
-                    <div class="marca col-sm-6 col-xs-12">
-                        <div class="foto-marca" style="background-image: url(img/marcas-swareflex.jpg)">
-                            <div class="titulo-marca thin">
-                                <h2>SWAREFLEX</h2>
-                                
-                            </div>
-                            <div class="texto-marca hidden">
-                                <p class="thin">Swareflex es una empresa innovadora, con el desarrollo constante de la experiencia de Swarovski. La capacidad de la compañía para establecer los parámetros ópticos y con deseo de redefinir nuestra comprensión de la iluminación. Como resultado la línea de iluminación: LIGHT EXPERIENCE, es una iIuminación funcional, con ópticas de cristal; brindando una excelente durabilidad y alta eficiencia energética led.</p>
-                                <a href="#" class="">Ver Proyectos</a>
-                            </div>
+
+
+                <!-- WP Query Marcas -->
+
+            <?php $the_query = new WP_Query('cat=3'); ?>
+            <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+            
+
+            <?php
+            $thumb_id = get_post_thumbnail_id();
+            $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
+            $thumb_url = $thumb_url_array[0];
+            ?>
+    
+
+            <div class="marca col-sm-6 col-xs-12">
+                    <div class="foto-marca" style="background-image: url(<?php echo $thumb_url ?>)">
+                        <div class="titulo-marca thin">
+                            <h2><?php the_title(); ?></h2>
+                            
+                        </div>
+                        <div class="texto-marca hidden">
+                            <?php the_content(); ?>
+                            <a href="#" class="">Ver Proyectos</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="marca col-sm-6 col-xs-12">
-                        <div class="foto-marca" style="background-image: url(img/marcas-mk.jpg)">
-                            <div class="titulo-marca thin">
-                                <h2>MK</h2>
-                            </div>
-                            <div class="texto-marca hidden">
-                                <p class="thin">Fundada en 1996, MK iluminación ha ganado reconocimiento a nivel mundial por ser unos creadores excepcionales y proveedores de iluminación festiva, para todas las ocasiones. La compañía es competente ,innovadora y un socio confiable con gran conocimiento especializado en el área. De acuerdo con su filosofía, de ser una empresa regional con una visión global. MK iluminación ofrece un servicio integral en tres áreas principales: ocio, espacios públicos y Retail Real Estate.</p>
-                                <a href="#" class="">Ver Proyectos</a> 
-                            </div>
-                        </div>                        
-                    </div>
 
-                    <div class="marca col-sm-6 col-xs-12">
-                        <div class="foto-marca" style="background-image: url(img/marcas-lts.jpg)">
-                            <div class="titulo-marca thin">
-                                <h2>LTS</h2>
-                            </div>
-                            <div class="texto-marca hidden">
-                                <p class="thin">Es una empresa establecida en Ravensburg, Alemania desde 1985. La iluminación y su diversidad siempre ha sido el centro de LTS; debido a la competencia en el mercado, ha desarrollado luminarias de mayor calidad con tecnología de última generación. Nuestro servicio garantiza estética y soluciones luminotécnicas. Nuestro énfasis siempre es dirigido en conceptos de sostenibilidad. Una ventaja considerable, es a través del desarrollo y producción de tecnología, tal como: reflectores PRI, con una mayor eficiencia y ahorro considerable en los consumos energéticos.</p> 
-                                <a href="#" class="">Ver Proyectos</a>   
-                            </div>
-                        </div>                        
-                    </div>
 
-                    <div class="marca col-sm-6 col-xs-12">
-                        <div class="foto-marca" style="background-image: url(img/marcas-bartenbach.jpg)">
-                            <div class="titulo-marca thin">
-                                <h2>BARTENBACH</h2>
-                            </div>
-                            <div class="texto-marca hidden">
-                                <p class="thin">Los expertos de Bartenbach se centran en el lighting design, no solamente con luz artificial sino también con Day light. Desarrollando el proyecto desde la conceptualización hasta el desarrollo de sistemas de iluminación de acuerdo a las necesidades de cada cliente. Asesoría para proyectos arquitectónicos así como también para la certificación LEED. Nuestros colaboradores, trabajan en el diseño de iluminación, investigación y desarrollo, así como también la psicología de la percepción para desarrollar soluciones de iluminación óptimos.</p> 
-                                <a href="#" class="">Ver Proyectos</a>   
-                            </div>
-                        </div>                        
-                    </div>
+        
+                            
+        <?php endwhile; ?>
+        <?php endif; ?>
+
+
 
                 </div>
             </div>
@@ -251,7 +242,7 @@
 
         <?php
         $thumb_id = get_post_thumbnail_id();
-        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Prensa', true);
+        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
         $thumb_url = $thumb_url_array[0];
         ?>
 
