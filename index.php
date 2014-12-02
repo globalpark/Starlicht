@@ -244,7 +244,7 @@
         <div class="container-fluid">
         
         <!-- Wordpress Query for Prensa -->
-        <?php $the_query1 = new WP_Query('showposts=3&cat=4,'); ?>
+        <?php $the_query1 = new WP_Query('showposts=6&cat=4,'); ?>
         <?php if ($the_query1->have_posts()) : while ($the_query1->have_posts()) : $the_query1->the_post(); ?>
 
         <?php if( has_post_thumbnail() ) { ?>
@@ -256,7 +256,7 @@
         ?>
 
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="<?php echo $thumb_url ?>" class="fancybox" rel="group"><?php the_post_thumbnail( 'full' ); ?></a>
+                    <a href="<?php echo $thumb_url ?>" class="fancybox" rel="group"><?php the_post_thumbnail( 'Prensa' ); ?></a>
                 </div>
 
         <?php } ?>
@@ -324,7 +324,6 @@
                 ], {duration: 2000, fade: 750} );
 
             $(document).ready( function(){
-                //$('#main-nav').stickUp();//
                 $('.fancybox').fancybox();
             } );
 

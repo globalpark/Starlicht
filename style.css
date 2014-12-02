@@ -15,3 +15,5 @@ Text Domain: starlicht
 @import url(css/main.css);
 @import url(css/marginizer.css);
 @import url(css/font-awesome.css);
+@import url(js/fancybox/jquery.fancybox.css);
+
