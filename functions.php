@@ -6,7 +6,7 @@ add_image_size( 'Prensa', 600, 450, true );
 
 //Hacer imagenes responsivas
 function bootstrap_responsive_images( $html ){
-  $classes = 'img-responsive fancybox'; // separated by spaces, e.g. 'img image-link'
+  $classes = 'img-responsive'; // separated by spaces, e.g. 'img image-link'
 
   // check if there are already classes assigned to the anchor
   if ( preg_match('/<img.*? class="/', $html) ) {
