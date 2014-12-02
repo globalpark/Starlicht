@@ -11,14 +11,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/marginizer.css">
-        <link rel="stylesheet" href="css/font-awesome.css">
-        <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css">
+        <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
 
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <!-- WP HEAD -->
+        <?php wp_enqueue_script('jquery');
+        ?>
+        <?php wp_head();?>
+
     </head>
     <body data-spy="scroll" data-target="#main-nav" data-offset="104" onload="actualiza()">
         <!--[if lt IE 7]>
@@ -241,27 +241,33 @@
 
         <!-- Prensa -->
         <section id="prensa">
-            <div class="container-fluid">
+        <div class="container-fluid">
+        
+        <!-- Wordpress Query for Prensa -->
+        <?php $the_query1 = new WP_Query('showposts=3&cat=4,'); ?>
+        <?php if ($the_query1->have_posts()) : while ($the_query1->have_posts()) : $the_query1->the_post(); ?>
+
+        <?php if( has_post_thumbnail() ) { ?>
+
+        <?php
+        $thumb_id = get_post_thumbnail_id();
+        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Prensa', true);
+        $thumb_url = $thumb_url_array[0];
+        ?>
+
                 <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="img/prensa1.jpg" class="fancybox" rel="group"><img src="img/prensa-1.jpg" class="img-responsive"></a>
+                    <a href="<?php echo $thumb_url ?>" class="fancybox" rel="group"><?php the_post_thumbnail( 'full' ); ?></a>
                 </div>
-                <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="img/prensa2.jpg" class="fancybox" rel="group"><img src="img/prensa-2.jpg" class="img-responsive"></a>
-                </div>
-                <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="img/prensa3.jpg" class="fancybox" rel="group"><img src="img/prensa-3.jpg" class="img-responsive"></a>
-                </div>
-                <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="img/prensa4.jpg" class="fancybox" rel="group"><img src="img/prensa-4.jpg" class="img-responsive"></a>
-                </div>
-                <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="img/prensa5.jpg" class="fancybox" rel="group"><img src="img/prensa-5.jpg" class="img-responsive"></a>
-                </div>
-                <div class="col-sm-4 col-xs-6 p-00">
-                    <a href="img/prensa1.jpg" class="fancybox" rel="group"><img src="img/prensa-1.jpg" class="img-responsive"></a>
-                </div>
-            </div>
+
+        <?php } ?>
+                            
+        <?php endwhile; ?>
+        <?php endif; ?>
+
+        </div>
         </section>
+
+
 
         <section id="contacto">
             <div id="foto-contacto" class="hidden">
@@ -300,25 +306,21 @@
 
         </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/vendor/jquery.backstretch.js"></script>
-        <script src="js/vendor/jquery.scrollTo.min.js"></script>
-        <script src="js/vendor/jquery.localScroll.min.js"></script>
-        <script src="js/vendor/stickUp.js"></script>
-        <script src="js/fancybox/jquery.fancybox.js"></script>
-        <script src="js/main.js"></script>
+        <!-- WP FOOTER -->
+        <?php wp_footer();
+        wpstarlicht_scripts();
+        ?>
+
 
         <script type="text/javascript">
 
             //Start Slideshow
             $("#foto-intro").backstretch([
-                "img/home-1.jpg",
-                "img/home-2.jpg",
-                "img/home-3.jpg",
-                "img/home-4.jpg"
+                "wp-content/themes/Starlicht/img/home-1.jpg",
+                "wp-content/themes/Starlicht/img/home-2.jpg",
+                "wp-content/themes/Starlicht/img/home-3.jpg",
+                "wp-content/themes/Starlicht/img/home-4.jpg"
                 ], {duration: 2000, fade: 750} );
 
             $(document).ready( function(){

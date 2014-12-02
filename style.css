@@ -9,3 +9,9 @@ License: None
 Text Domain: starlicht
 */
 
+
+@import url(css/bootstrap.min.css);
+@import url(css/bootstrap-theme.min.css);
+@import url(css/main.css);
+@import url(css/marginizer.css);
+@import url(css/font-awesome.css);
