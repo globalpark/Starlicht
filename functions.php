@@ -79,4 +79,50 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 
+// Opciones (Settings API) //
+
+add_action( 'admin_menu', 'my_admin_menu' );
+function my_admin_menu() {
+    add_options_page( 'Opciones', 'Menú de Opciones', 'manage_options', 'menu-options', 'options_page' );
+}
+
+
+add_action( 'admin_init', 'my_admin_init' );
+function my_admin_init() {
+    register_setting( 'main-settings-group', 'header-option' );
+    add_settings_section( 'home-section', 'Home', 'home_section_callback', 'menu-options' );
+    add_settings_field( 'field-one', 'Descripción', 'field_one_callback', 'menu-options', 'home-section' );
+}
+
+
+function section_one_callback() {
+    echo 'Escriba la descripción que aparecerá en la página principal (Por default: Quiénes Somos)';
+}
+
+
+
+function field_one_callback() {
+    $setting = esc_attr( get_option( 'header-option' ) );
+    echo "<input type='text' name='header-option' value='$setting' />";
+}
+
+
+
+
+
+function options_page() {
+    ?>
+    <div class="wrap">
+        <h2>Opciones</h2>
+        <form action="options.php" method="POST">
+            <?php settings_fields( 'main-settings-group' ); ?>
+            <?php do_settings_sections( 'menu-options' ); ?>
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <?php
+}
+
+
+
 ?>

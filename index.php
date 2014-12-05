@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="language" content="spanish">
-        <title>Starlicht</title>
+        <title><?php bloginfo('name') ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +28,7 @@
         <div id="fullscreen-background">
 
           <div id="logo-intro">
-            <img src="img/Starlicht-Logo.svg" class="img-responsive center">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/Starlicht-Logo.svg" class="img-responsive center">
           </div>
 
           <div id="entrar" class="center">
@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a id="logo-nav" class="navbar-brand" href="#"><img src="img/logo-horizontal.svg" class="img-responsive"></a>
+              <a id="logo-nav" class="navbar-brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/logo-horizontal.svg" class="img-responsive"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -84,7 +84,7 @@
 
                     <div class="row">
                         <div id="texto-quienes" class="col-sm-7 col-xs-12 right">
-                            <p class="thin">STARLICHT Iluminación es una empresa con distribución exclusiva de las marcas SWAREFLEX, LTS Y BARTENBACH, ofreciendo a nuestros clientes la mas alta calidad en tecnología Alemana y Austriaca.</p>
+                            <p class="thin"><?php echo get_option( 'header-option' ); ?></p>
                         </div>
                     </div>
 
