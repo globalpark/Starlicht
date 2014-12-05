@@ -83,27 +83,75 @@ add_action( 'init', 'register_my_menus' );
 
 add_action( 'admin_menu', 'my_admin_menu' );
 function my_admin_menu() {
-    add_options_page( 'Opciones', 'Menú de Opciones', 'manage_options', 'menu-options', 'options_page' );
+    add_options_page( 'Opciones', 'Opciones de Página', 'manage_options', 'menu-options', 'options_page' );
 }
 
 
 add_action( 'admin_init', 'my_admin_init' );
 function my_admin_init() {
     register_setting( 'main-settings-group', 'header-option' );
+    register_setting( 'main-settings-group', 'description-option' );
+
+    register_setting( 'main-settings-group', 'city-option' );
+    register_setting( 'main-settings-group', 'tel1-option' );
+    register_setting( 'main-settings-group', 'tel2-option' );
+    register_setting( 'main-settings-group', 'email-option' );
+
     add_settings_section( 'home-section', 'Home', 'home_section_callback', 'menu-options' );
-    add_settings_field( 'field-one', 'Descripción', 'field_one_callback', 'menu-options', 'home-section' );
+    add_settings_section( 'contact-section', 'Contacto', 'contact_section_callback', 'menu-options' );
+
+    add_settings_field( 'field-one', 'Título', 'field_one_callback', 'menu-options', 'home-section' );
+    add_settings_field( 'field-two', 'Descripción', 'field_two_callback', 'menu-options', 'home-section' );
+
+    add_settings_field( 'field-three', 'Ciudad', 'field_three_callback', 'menu-options', 'contact-section' );
+    add_settings_field( 'field-four', 'Teléfono 1', 'field_four_callback', 'menu-options', 'contact-section' );
+    add_settings_field( 'field-five', 'Teléfono 2', 'field_five_callback', 'menu-options', 'contact-section' );
+    add_settings_field( 'field-six', 'Mail de contacto', 'field_six_callback', 'menu-options', 'contact-section' );
+}
+
+function home_section_callback() {
+    echo 'Escriba la información que aparecerá en el header de la página principal.';
+}
+
+function contact_section_callback() {
+    echo 'Escriba la información que aparecerá en el footer de la página principal.';
 }
 
 
-function section_one_callback() {
-    echo 'Escriba la descripción que aparecerá en la página principal (Por default: Quiénes Somos)';
-}
+
+
 
 
 
 function field_one_callback() {
     $setting = esc_attr( get_option( 'header-option' ) );
     echo "<input type='text' name='header-option' value='$setting' />";
+}
+
+function field_two_callback() {
+    $setting2 = esc_attr( get_option( 'description-option' ) );
+    echo "<input type='text' name='description-option' value='$setting2' />";
+}
+
+
+function field_three_callback() {
+    $setting3 = esc_attr( get_option( 'city-option' ) );
+    echo "<input type='text' name='city-option' value='$setting3' />";
+}
+
+function field_four_callback() {
+    $setting4 = esc_attr( get_option( 'tel1-option' ) );
+    echo "<input type='text' name='tel1-option' value='$setting4' />";
+}
+
+function field_five_callback() {
+    $setting5 = esc_attr( get_option( 'tel2-option' ) );
+    echo "<input type='text' name='tel2-option' value='$setting5' />";
+}
+
+function field_six_callback() {
+    $setting6 = esc_attr( get_option( 'email-option' ) );
+    echo "<input type='text' name='email-option' value='$setting6' />";
 }
 
 

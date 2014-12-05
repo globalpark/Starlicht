@@ -78,13 +78,13 @@
 
                     <div class="row">
                         <div id="titulo-quienes" class="col-sm-6 col-xs-12 right">
-                            <h1 class="thin">QUIÉNES SOMOS</h1>
+                            <h1 class="thin"><?php echo get_option( 'header-option' ); ?></h1>
                         </div>
                     </div>
 
                     <div class="row">
                         <div id="texto-quienes" class="col-sm-7 col-xs-12 right">
-                            <p class="thin"><?php echo get_option( 'header-option' ); ?></p>
+                            <p class="thin"><?php echo get_option( 'description-option' ); ?></p>
                         </div>
                     </div>
 
@@ -286,10 +286,10 @@
                     <!-- <h3 class="center">Sierra de Mimbres 37</h3>
                     <h3 class="center">Lomas de Chapultepec</h3>
                     <h3 class="center">Miguel Hidalgo</h3> -->
-                    <h3 class="center m-top40">Ciudad de México</h3>
-                    <h3 class="center m-top40">+52 (55) 9243 3586</h3>
-                    <h3 class="center">+52 (55) 5043 3708</h3>
-                    <a href="mailto:info@starlichtmexico.com"><h3 class="center m-top40 thin">info@starlichtmexico.com</h3></a>
+                    <h3 class="center m-top40"><?php echo get_option( 'city-option' ); ?></h3>
+                    <h3 class="center m-top40"><?php echo get_option( 'tel1-option' ); ?></h3>
+                    <h3 class="center"><?php echo get_option( 'tel2-option' ); ?></h3>
+                    <a href="mailto:info@starlichtmexico.com"><h3 class="center m-top40 thin"><?php echo get_option( 'email-option' ); ?></h3></a>
                 </div>
 
             </div>
