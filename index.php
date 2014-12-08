@@ -38,7 +38,7 @@
           
         </div>
 
-        <div id="page-container">
+        <div id="page-container"><!-- Page Container -->
 
         <!-- Navbar -->
         <nav id="main-nav" class="navbar navbar-default" role="navigation">
@@ -99,44 +99,32 @@
             
             <div class="container thin">
                 <div class="row">
+              
+                    <!-- WP Query Marcas -->
+                    <?php $the_query = new WP_Query('category_name=marca'); ?>
+                    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
+                    <?php
+                    $thumb_id = get_post_thumbnail_id();
+                    $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
+                    $thumb_url = $thumb_url_array[0];
+                    ?>
 
-
-                <!-- WP Query Marcas -->
-
-            <?php $the_query = new WP_Query('cat=3'); ?>
-            <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
-
-            
-
-            <?php
-            $thumb_id = get_post_thumbnail_id();
-            $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
-            $thumb_url = $thumb_url_array[0];
-            ?>
-    
-
-            <div class="marca col-sm-6 col-xs-12">
-                    <div class="foto-marca" style="background-image: url(<?php echo $thumb_url ?>)">
-                        <div class="titulo-marca thin">
-                            <h2><?php the_title(); ?></h2>
-                            
-                        </div>
-                        <div class="texto-marca hidden">
-                            <?php the_content(); ?>
-                            <a href="#" class="">Ver Proyectos</a>
+                    <div class="marca col-sm-6 col-xs-12">
+                        <div class="foto-marca" style="background-image: url(<?php echo $thumb_url ?>)">
+                            <div class="titulo-marca thin">
+                                <h2><?php the_title(); ?></h2>
+                                
+                            </div>
+                            <div class="texto-marca hidden">
+                                <?php the_content(); ?>
+                                <a href="#" class="">Ver Proyectos</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-
-
-        
-                            
-        <?php endwhile; ?>
-        <?php endif; ?>
-
-
+                                    
+                    <?php endwhile; ?>
+                    <?php endif; ?>
 
                 </div>
             </div>
@@ -235,7 +223,7 @@
         <div class="container-fluid">
         
         <!-- Wordpress Query for Prensa -->
-        <?php $the_query1 = new WP_Query('showposts=6&cat=4,'); ?>
+        <?php $the_query1 = new WP_Query('showposts=6&category_name=prensa'); ?>
         <?php if ($the_query1->have_posts()) : while ($the_query1->have_posts()) : $the_query1->the_post(); ?>
 
         <?php if( has_post_thumbnail() ) { ?>
@@ -256,11 +244,11 @@
         <?php endif; ?>
 
         </div>
-        </section>
+        </section><!-- ./Prensa -->
 
 
 
-        <section id="contacto">
+        <section id="contacto"><!-- Contacto -->
             <div id="foto-contacto" class="hidden">
             </div>
             
@@ -293,9 +281,9 @@
                 </div>
 
             </div>
-        </section>
+        </section><!-- ./Contacto -->
 
-        </div>
+        </div><!-- ./Page Container -->
 
 
         <!-- WP FOOTER -->

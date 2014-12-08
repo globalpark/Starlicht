@@ -121,6 +121,7 @@
 #main-nav .navbar-nav > li > a{
 	color: #808284;
 	border-bottom: 2px solid #fff;
+	text-transform: uppercase;
 }
 
 #main-nav .navbar-nav > li > a:hover{
