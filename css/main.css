@@ -294,6 +294,26 @@
 	text-align: left;
 }
 
+.proyecto-individual {
+	padding: 0px 10px 0px 0px;
+}
+
+
+.nombre-proyecto p{
+	font-size: 20px;
+	text-decoration: none;
+	color:##808284;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.6);
+
+}
+
+.nombre-proyecto p{
+	padding: 100px 0px 100px 0px; 
+
+}
+
+
 
 /* ==========================================================================
    Contacto
