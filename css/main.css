@@ -295,22 +295,74 @@
 }
 
 .proyecto-individual {
-	padding: 0px 10px 0px 0px;
+	padding: 0px 10px 10px 0px;
 }
 
+
+
+.nombre-proyecto {
+	background-position: center center;
+	background-size: cover;
+}
 
 .nombre-proyecto p{
 	font-size: 20px;
 	text-decoration: none;
-	color:##808284;
+	color:#808284;
 	text-align: center;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255,0.8);
 
 }
 
-.nombre-proyecto p{
-	padding: 100px 0px 100px 0px; 
+.nombre-proyecto:hover {
 
+	
+	
+}
+
+.container-proyecto-p {
+	
+	padding: 100px 30px 100px 30px;
+	margin-bottom: 0px;
+
+}
+
+.foto-proyecto{
+	width: 100%;
+	height: 800px;
+	background-position: center center;
+	background-size: cover;
+}
+
+.desc-proyecto-container{
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	margin-top: 550px;
+
+}
+
+.titulo-detalle-proyecto p{
+	font-size: 36px;
+	font-family: "Alright-Thin" !important;
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+.desc-proyecto-container a{
+	color: white !important;
+	text-decoration: underline;
+
+
+}
+
+.texto-desc-detalle{
+	
+	font-family: "Alright-Thin" !important;
+	padding-left: 10px;
+}
+
+.foto-proyecto {
+	padding-right: 0px;
 }
 
 
