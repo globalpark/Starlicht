@@ -79,6 +79,24 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 
+
+// Custom Post Type Proyecto
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'proyecto',
+    array(
+      'labels' => array(
+        'name' => __( 'Proyectos' ),
+        'singular_name' => __( 'Proyecto' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
+}
+
+
 // Opciones (Settings API) //
 
 add_action( 'admin_menu', 'my_admin_menu' );

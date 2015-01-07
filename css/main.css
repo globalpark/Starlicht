@@ -121,7 +121,6 @@
 #main-nav .navbar-nav > li > a{
 	color: #808284;
 	border-bottom: 2px solid #fff;
-	text-transform: uppercase;
 }
 
 #main-nav .navbar-nav > li > a:hover{
@@ -230,7 +229,6 @@
 
 .texto-marca p{
 	font-size: 15px;
-	font-family: "Alright-Thin";
 }
 
 .texto-marca a{
@@ -276,6 +274,11 @@
 	border-bottom: 2px solid #808284;
 }
 
+#proyectos .tab-content{
+	padding-top: 10px;
+	background-color: #fff;
+}
+
 .proyecto{
 	width: 100%;
 	background-size: cover;
@@ -295,6 +298,78 @@
 	padding: 20px 20px;
 	text-align: left;
 }
+
+.proyecto-individual {
+	padding: 0px 10px 10px 0px;
+}
+
+
+
+.nombre-proyecto {
+	background-position: center center;
+	background-size: cover;
+}
+
+.nombre-proyecto p{
+	font-size: 20px;
+	text-decoration: none;
+	color:#808284;
+	text-align: center;
+	background-color: rgba(255, 255, 255,0.8);
+
+}
+
+.nombre-proyecto:hover {
+
+	
+	
+}
+
+.container-proyecto-p {
+	
+	padding: 100px 30px 100px 30px;
+	margin-bottom: 0px;
+
+}
+
+.foto-proyecto{
+	width: 100%;
+	height: 800px;
+	background-position: center center;
+	background-size: cover;
+}
+
+.desc-proyecto-container{
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	margin-top: 550px;
+
+}
+
+.titulo-detalle-proyecto p{
+	font-size: 36px;
+	font-family: "Alright-Thin" !important;
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+.desc-proyecto-container a{
+	color: white !important;
+	text-decoration: underline;
+
+
+}
+
+.texto-desc-detalle{
+	
+	font-family: "Alright-Thin" !important;
+	padding-left: 10px;
+}
+
+.foto-proyecto {
+	padding-right: 0px;
+}
+
 
 
 /* ==========================================================================
@@ -385,10 +460,3 @@
 		font-size: 13px;
 	}
 }
-
-
-
-
-
-
-

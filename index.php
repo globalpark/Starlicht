@@ -137,7 +137,6 @@
                 <div class="row">
                     <ul id="proyectos-nav" class="nav nav-pills nav-justified" role="tablist">
                         <li class="active"><a href="#p-swareflex" role="tab" data-toggle="tab">SWAREFLEX</a></li>
-                        <li><a href="#p-mk" role="tab" data-toggle="tab">MK</a></li>
                         <li><a href="#p-lts" role="tab" data-toggle="tab">LTS</a></li>
                         <li><a href="#p-bartenbach" role="tab" data-toggle="tab">BARTENBACH</a></li>
                     </ul>
@@ -145,72 +144,337 @@
             </div>
 
             <div class="tab-content">
-
-                <div class="tab-pane fade in active proyecto" id="p-swareflex" style="background-image: url(img/home-1.jpg)">
+                
+                <div class="tab-pane fade in active proyecto" id="p-swareflex">
                     <div class="container container-proyecto">
-                        <div class="row">
-                            <div class="titulo-proyecto col-sm-6 col-xs-12 right">
-                                <h1 class="thin">SWAREFLEX</h1>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="texto-proyecto col-sm-7 col-xs-12 right">
-                                <p class="thin">Próximamente</p>
+                    
+
+                        <!-- WP Query Proyectos -->
+                        $args = array( 'post_type' => 'proyecto', 'posts_per_page' => 10 );
+                        <?php $the_query2 = new WP_Query($args); ?>
+                        <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
+
+                        <?php
+                        $thumb_id = get_post_thumbnail_id();
+                        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
+                        $thumb_url = $thumb_url_array[0];
+                        ?>
+
+
+
+                        <a href="proyecto.php"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
+                                <div class="container-proyecto-p">
+                                    <p><?php the_title(); ?></p>
+                                </div>
                             </div>
-                        </div>
+                        </div></a>
+
+
+
+
+                        <?php endwhile; ?>
+                        <?php endif; ?>
+
+
 
                     </div>
                 </div>
 
-                <div class="tab-pane fade proyecto" id="p-mk" style="background-image: url(img/home-2.jpg)">
+                <div class="tab-pane fade in active proyecto" id="p-bartenbach">
                     <div class="container container-proyecto">
-                        <div class="row">
-                            <div class="titulo-proyecto col-sm-6 col-xs-12 right">
-                                <h1 class="thin">MK</h1>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="texto-proyecto col-sm-7 col-xs-12 right">
-                                <p class="thin">Próximamente</p>
+
+
+                        <!-- WP Query Proyectos -->
+                        <?php $the_query3 = new WP_Query('category_name=proyectobarten'); ?>
+                        <?php if ($the_query3->have_posts()) : while ($the_query3->have_posts()) : $the_query3->the_post(); ?>
+
+                        <?php
+                        $thumb_id = get_post_thumbnail_id();
+                        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
+                        $thumb_url = $thumb_url_array[0];
+                        ?>
+
+
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
+                                <div class="container-proyecto-p">
+                                    <p><?php the_title(); ?></p>
+                                </div>
                             </div>
-                        </div>
+                        </div></a>
+
+
+
+
+                        <?php endwhile; ?>
+                        <?php endif; ?>
+
+
 
                     </div>
                 </div>
 
-                <div class="tab-pane fade proyecto" id="p-lts" style="background-image: url(img/home-3.jpg)">
+                <div class="tab-pane fade in active proyecto" id="p-lts">
                     <div class="container container-proyecto">
-                        <div class="row">
-                            <div class="titulo-proyecto col-sm-6 col-xs-12 right">
-                                <h1 class="thin">LTS</h1>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="texto-proyecto col-sm-7 col-xs-12 right">
-                                <p class="thin">Próximamente</p>
+
+
+                        <!-- WP Query Proyectos -->
+                        <?php $the_query = new WP_Query('category_name=proyectoLts'); ?>
+                        <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+                        <?php
+                        $thumb_id = get_post_thumbnail_id();
+                        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
+                        $thumb_url = $thumb_url_array[0];
+                        ?>
+
+
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
+                                <div class="container-proyecto-p">
+                                    <p><?php the_title(); ?></p>
+                                </div>
                             </div>
-                        </div>
+                        </div></a>
+
+
+
+
+                        <?php endwhile; ?>
+                        <?php endif; ?>
+
+
 
                     </div>
                 </div>
 
-                <div class="tab-pane fade proyecto" id="p-bartenbach" style="background-image: url(img/home-4.jpg)">
+                <div class="tab-pane fade proyecto" id="p-mk" >
                     <div class="container container-proyecto">
-                        <div class="row">
-                            <div class="titulo-proyecto col-sm-6 col-xs-12 right">
-                                <h1 class="thin">BARTENBACH</h1>
-                            </div>
-                        </div>
+                     
+                    </div>
+                </div>
 
-                        <div class="row">
-                            <div class="texto-proyecto col-sm-7 col-xs-12 right">
-                                <p class="thin">Próximamente</p>
+                <div class="tab-pane fade proyecto" id="p-lts" >
+                    <div class="container container-proyecto">
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-114.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 1</p>
+                                </div>
                             </div>
-                        </div>
+                        </div></a>
 
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-120.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 2</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-126.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 3</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-139.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 4</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-144.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 5</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-146.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 6</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-147.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 7</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-150.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 8</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-156.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 9</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-159.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 10</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-164.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 11</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-175.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 12</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-178.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 13</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-179.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 14</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                       <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-181.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 15</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/LTS/LTS_Licht-und-Architektur-194.jpg)" >
+                                <div class="container-proyecto-p">
+                                    <p>PROYECTO 16</p>
+                                </div>
+                            </div>
+                        </div></a>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade proyecto" id="p-bartenbach" >
+                    <div class="container container-proyecto">
+                           <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Design Week</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)" style="background-image: url(http://placehold.it/1000x1000)">
+                                <p>Proyecto 27</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Daniel Espinosa</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Instituto Alemán</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Baño Principal</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Tom Wills</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Proyecto Lomas</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Luz Brillante</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Bjarke Ingels</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Centro Belga de Diseño</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Proyecto 32</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Andrés Rivero</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Lux</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Design Center</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Derek</p>
+                            </div>
+                        </div></a>
+                        <a href="#"><div class="proyecto-individual col-sm-3">
+                            <div class="nombre-proyecto" style="background-image: url(img/)">
+                                <p>Elias</p>
+                            </div>
+                        </div></a>
                     </div>
                 </div>
 
