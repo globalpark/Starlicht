@@ -40,23 +40,6 @@
         <?php wp_footer();
         wpstarlicht_scripts();
         ?>
-
-
-        <script type="text/javascript">
-
-            //Start Slideshow
-            $("#foto-intro").backstretch([
-                "wp-content/themes/Starlicht/img/home-1.jpg",
-                "wp-content/themes/Starlicht/img/home-2.jpg",
-                "wp-content/themes/Starlicht/img/home-3.jpg",
-                "wp-content/themes/Starlicht/img/home-4.jpg"
-                ], {duration: 2000, fade: 750} );
-
-            $(document).ready( function(){
-                $('.fancybox').fancybox();
-            } );
-
-        </script>
         
     </body>
 </html>

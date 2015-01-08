@@ -1,7 +1,7 @@
 <?php
 
 
-add_theme_support( 'post-thumbnails' ); 
+add_theme_support( 'post-thumbnails', array( 'post', 'proyecto' ) );
 add_image_size( 'Prensa', 600, 450, true );	
 add_image_size( 'Marca', 1000, 1000, true );	
 
@@ -66,6 +66,25 @@ add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'wp_footer', 'wpstarlicht_scripts');
 
 
+
+
+
+  function wpstarlicht_basic_scripts()
+{
+
+  wp_register_script( 'jquery', get_template_directory_uri() . '/js/vendor/jquery-1.11.1.min.js', array() );
+  wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array() );
+  wp_register_script( 'backstretch', get_template_directory_uri() . '/js/vendor/jquery.backstretch.js', array() );
+
+  wp_enqueue_script( 'jquery' );
+  wp_enqueue_script( 'bootstrap' );
+  wp_enqueue_script( 'backstretch' );
+  
+}
+
+add_action( 'wp_footer', 'wpstarlicht_basic_scripts');
+
+
 // Menús //
 
 function register_my_menus() {
@@ -86,6 +105,8 @@ add_action( 'init', 'create_post_type' );
 function create_post_type() {
   register_post_type( 'proyecto',
     array(
+      'taxonomies' => array('category'),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
       'labels' => array(
         'name' => __( 'Proyectos' ),
         'singular_name' => __( 'Proyecto' )
@@ -95,6 +116,18 @@ function create_post_type() {
     )
   );
 }
+
+
+
+
+// Erase images from content
+
+add_filter('the_content', 'strip_images',2);
+
+function strip_images($content){
+   return preg_replace('/<img[^>]+./','',$content);
+}
+
 
 
 // Opciones (Settings API) //
@@ -176,6 +209,79 @@ function field_six_callback() {
 
 
 
+
+
+
+
+function bdw_get_images() {
+ 
+    // Get the post ID
+    $iPostID = $post->ID;
+ 
+    // Get images for this post
+    $arrImages =& get_children('post_type=attachment&post_mime_type=image&post_parent=' . $iPostID );
+ 
+    // If images exist for this page
+    if($arrImages) {
+ 
+        // Get array keys representing attached image numbers
+        $arrKeys = array_keys($arrImages);
+ 
+        /******BEGIN BUBBLE SORT BY MENU ORDER************
+        // Put all image objects into new array with standard numeric keys (new array only needed while we sort the keys)
+        foreach($arrImages as $oImage) {
+            $arrNewImages[] = $oImage;
+        }
+ 
+        // Bubble sort image object array by menu_order TODO: Turn this into std "sort-by" function in functions.php
+        for($i = 0; $i < sizeof($arrNewImages) - 1; $i++) {
+            for($j = 0; $j < sizeof($arrNewImages) - 1; $j++) {
+                if((int)$arrNewImages[$j]->menu_order > (int)$arrNewImages[$j + 1]->menu_order) {
+                    $oTemp = $arrNewImages[$j];
+                    $arrNewImages[$j] = $arrNewImages[$j + 1];
+                    $arrNewImages[$j + 1] = $oTemp;
+                }
+            }
+        }
+ 
+        // Reset arrKeys array
+        $arrKeys = array();
+ 
+        // Replace arrKeys with newly sorted object ids
+        foreach($arrNewImages as $oNewImage) {
+            $arrKeys[] = $oNewImage->ID;
+        }
+        ******END BUBBLE SORT BY MENU ORDER**************/
+ 
+        // Get the first image attachment
+        $iNum = $arrKeys[0];
+ 
+        // Get the thumbnail url for the attachment
+        //$sThumbUrl = wp_get_attachment_thumb_url($iNum);
+ 
+        // UNCOMMENT THIS IF YOU WANT THE FULL SIZE IMAGE INSTEAD OF THE THUMBNAIL
+        $sImageUrl = wp_get_attachment_url($iNum);
+ 
+        // Build the <img> string
+        $sImgString = '<a href="' . get_permalink() . '">' .
+                            '<img src="' . $sImageUrl . '"   alt="" title="" />' .
+                        '</a>';
+ 
+        // Print the image
+        echo $sImgString;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 function options_page() {
     ?>
     <div class="wrap">
@@ -188,6 +294,10 @@ function options_page() {
     </div>
     <?php
 }
+
+
+
+
 
 
 

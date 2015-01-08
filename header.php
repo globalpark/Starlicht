@@ -46,14 +46,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
-            <?php wp_nav_menu( array( 'theme_location' => 'main-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
-              <!--<ul class="nav navbar-nav navbar-right">
-                <li><a href="#intro">QUIÉNES SOMOS</a></li>
-                <li><a href="#marcas">MARCAS</a></li>
-                <li id="proyectos-link"><a href="#proyectos">PROYECTOS</a></li>
-                <li><a href="#prensa">PRENSA</a></li>
-                <li><a href="#contacto">CONTACTO</a></li>
-              </ul>-->
+            <!-- //<?php wp_nav_menu( array( 'theme_location' => 'main-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?> -->
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="<?php bloginfo( 'url' ); ?>/#intro">QUIÉNES SOMOS</a></li>
+                <li><a href="<?php bloginfo( 'url' ); ?>/#marcas">MARCAS</a></li>
+                <li id="proyectos-link"><a href="<?php bloginfo( 'url' ); ?>/#proyectos">PROYECTOS</a></li>
+                <li><a href="<?php bloginfo( 'url' ); ?>/#prensa">PRENSA</a></li>
+                <li><a href="<?php bloginfo( 'url' ); ?>/#contacto">CONTACTO</a></li>
+              </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav><!-- /.Navbar -->

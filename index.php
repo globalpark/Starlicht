@@ -125,6 +125,7 @@
                                     
                     <?php endwhile; ?>
                     <?php endif; ?>
+                    <?php wp_reset_query(); ?>
 
                 </div>
             </div>
@@ -151,7 +152,7 @@
                     
 
                         <!-- WP Query Proyectos -->
-                        $args = array( 'post_type' => 'proyecto', 'posts_per_page' => 10 );
+                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyectosware', 'posts_per_page' => 10 ); ?>
                         <?php $the_query2 = new WP_Query($args); ?>
                         <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
@@ -163,7 +164,7 @@
 
 
 
-                        <a href="proyecto.php"><div class="proyecto-individual col-sm-3">
+                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3">
                             <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
                                 <div class="container-proyecto-p">
                                     <p><?php the_title(); ?></p>
@@ -176,7 +177,7 @@
 
                         <?php endwhile; ?>
                         <?php endif; ?>
-
+                        <?php wp_reset_query(); ?>
 
 
                     </div>
@@ -566,7 +567,7 @@
                 "wp-content/themes/Starlicht/img/home-4.jpg"
                 ], {duration: 2000, fade: 750} );
 
-            $(document).ready( function(){
+        $(document).ready( function(){
                 $('.fancybox').fancybox();
             } );
 
