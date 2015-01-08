@@ -183,14 +183,15 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade in active proyecto" id="p-bartenbach">
+                <div class="tab-pane fade in proyecto" id="p-bartenbach">
                     <div class="container container-proyecto">
 
 
 
                         <!-- WP Query Proyectos -->
-                        <?php $the_query3 = new WP_Query('category_name=proyectobarten'); ?>
-                        <?php if ($the_query3->have_posts()) : while ($the_query3->have_posts()) : $the_query3->the_post(); ?>
+                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyectosbarten', 'posts_per_page' => 10 ); ?>
+                        <?php $the_query2 = new WP_Query($args); ?>
+                        <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
                         <?php
                         $thumb_id = get_post_thumbnail_id();
@@ -200,7 +201,7 @@
 
 
 
-                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3">
                             <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
                                 <div class="container-proyecto-p">
                                     <p><?php the_title(); ?></p>
@@ -213,20 +214,22 @@
 
                         <?php endwhile; ?>
                         <?php endif; ?>
+                        <?php wp_reset_query(); ?>
 
 
 
                     </div>
                 </div>
 
-                <div class="tab-pane fade in active proyecto" id="p-lts">
+                <div class="tab-pane fade in  proyecto" id="p-lts">
                     <div class="container container-proyecto">
 
 
 
                         <!-- WP Query Proyectos -->
-                        <?php $the_query = new WP_Query('category_name=proyectoLts'); ?>
-                        <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyectolts', 'posts_per_page' => 10 ); ?>
+                        <?php $the_query2 = new WP_Query($args); ?>
+                        <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
                         <?php
                         $thumb_id = get_post_thumbnail_id();
@@ -236,7 +239,7 @@
 
 
 
-                        <a href="proyecto.html"><div class="proyecto-individual col-sm-3">
+                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3">
                             <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
                                 <div class="container-proyecto-p">
                                     <p><?php the_title(); ?></p>
@@ -249,6 +252,7 @@
 
                         <?php endwhile; ?>
                         <?php endif; ?>
+                        <?php wp_reset_query(); ?>
 
 
 

@@ -7,22 +7,45 @@ Template Name: Proyecto
 <?php get_header(); ?>
 
 
-<section id="proyecto">
-            
-            <div class="container thin foto-proyecto" id="foto-proyecto">
-                <div class="desc-proyecto-container col-sm-7 col-sm-offset-5">
+    <section id="proyecto">
+        
+        
+        <div class="row" id="arrows" >
+            <div class="col-xs-1">
+                <i id="prev" class="fa fa-angle-left fa-3x center slider-control"></i>
+            </div>
+            <div class="col-xs-offset-10 col-xs-1">
+                <i id="next" class="fa fa-angle-right fa-3x center slider-control"></i>
+            </div>
+        </div>
+
+        <div class="container thin foto-proyecto" id="foto-proyecto">
+            <div class="desc-proyecto-container col-md-8 col-md-offset-4 col-sm-12 hidden-xs">
+                <div class="titulo-detalle-proyecto thin">
+                    <p>  <?php the_title(); ?>  </p>
+                </div>
+
+                <div class="desc-detalle-proyecto">
+                    <p class="texto-desc-detalle"> <?php the_excerpt(); ?>  </p>
+                </div>
+                <a href="<?php bloginfo( 'url' ); ?>/#proyectos"><p>ver más proyectos</p></a>
+
+            </div>
+        </div>
+        <div class="row">
+             <div class="desc-proyecto-container col-xs-12 visible-xs">
                     <div class="titulo-detalle-proyecto thin">
                         <p>  <?php the_title(); ?>  </p>
                     </div>
 
                     <div class="desc-detalle-proyecto">
-                        <p class="texto-desc-detalle">  <?php echo apply_filters('the_content', $post->post_content); ?> </p>
+                        <p class="texto-desc-detalle"> <?php the_excerpt(); ?>  </p>
                     </div>
                     <a href="<?php bloginfo( 'url' ); ?>/#proyectos"><p>ver más proyectos</p></a>
 
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 <?php
 
@@ -141,38 +164,59 @@ $sImgString;
 
 
         <script type="text/javascript">
+            $( document ).ready(function() {
+                // Calculate viewport height
+                var height = $("#foto-proyecto").height();
+                $("#arrows").css("margin-top", height/2 - 15 + "px");
 
-            //Start Slideshow
-            $("#foto-proyecto").backstretch([
-                <?php 
-                    for($k=0; $k < sizeof($arrKeys) -1; $k++){
-                        // Get the first image attachment
-                         $iNum = $arrKeys[$k];
 
-                        // UNCOMMENT THIS IF YOU WANT THE FULL SIZE IMAGE INSTEAD OF THE THUMBNAIL
-                        $sImageUrl = wp_get_attachment_url($iNum);
-                 
-                        // Build the <img> string
-                        $sImgString = '"' . $sImageUrl . '",';
-                        echo $sImgString; 
-                    }
+                //Start Slideshow
+                $("#foto-proyecto").backstretch([
+                    <?php 
+                        for($k=0; $k < sizeof($arrKeys) -1; $k++){
+                            // Get the first image attachment
+                             $iNum = $arrKeys[$k];
 
-                    $iNum = $arrKeys[sizeof($arrKeys)-1];
+                            // UNCOMMENT THIS IF YOU WANT THE FULL SIZE IMAGE INSTEAD OF THE THUMBNAIL
+                            $sImageUrl = wp_get_attachment_url($iNum);
+                     
+                            // Build the <img> string
+                            $sImgString = '"' . $sImageUrl . '",';
+                            echo $sImgString; 
+                        }
 
-                        // UNCOMMENT THIS IF YOU WANT THE FULL SIZE IMAGE INSTEAD OF THE THUMBNAIL
-                        $sImageUrl = wp_get_attachment_url($iNum);
-                 
-                        // Build the <img> string
-                        $sImgString = '"' . $sImageUrl . '"';
-                        echo $sImgString; 
-                ?>
-                ], {duration: 2000, fade: 750} );
-            /*
-            $(document).ready( function(){
-                $('.fancybox').fancybox();
-            } );
-            */  
-</script>
+                        $iNum = $arrKeys[sizeof($arrKeys)-1];
+
+                            // UNCOMMENT THIS IF YOU WANT THE FULL SIZE IMAGE INSTEAD OF THE THUMBNAIL
+                            $sImageUrl = wp_get_attachment_url($iNum);
+                     
+                            // Build the <img> string
+                            $sImgString = '"' . $sImageUrl . '"';
+                            echo $sImgString; 
+                    ?>
+                    ], {duration: 2000, fade: 750} );
+                /*
+                $(document).ready( function(){
+                    $('.fancybox').fancybox();
+                } );
+                */
+
+
+                //Slideshow controllers
+                $("#prev").click( function(){
+                  $("#foto-proyecto").backstretch("prev");
+                });
+                $("#next").click( function(){
+                  $("#foto-proyecto").backstretch("next");
+                });
+
+
+            });
+            $( window ).resize(function() {
+                var height = $("#foto-proyecto").height();
+                $("#arrows").css("margin-top", height/2 - 15 + "px");
+            });
+        </script>
         
     </body>
 </html>
