@@ -47,6 +47,7 @@ Template Name: Proyecto
         </div>
     </section>
 
+<!-- WP Loop -->
 <?php
 
 $arrKeys;
@@ -64,60 +65,10 @@ $sImgString;
     if($arrImages) {
  
         // Get array keys representing attached image numbers
-        $arrKeys = array_keys($arrImages);
- 
-        /******BEGIN BUBBLE SORT BY MENU ORDER************
-        // Put all image objects into new array with standard numeric keys (new array only needed while we sort the keys)
-        foreach($arrImages as $oImage) {
-            $arrNewImages[] = $oImage;
-        }
- 
-        // Bubble sort image object array by menu_order TODO: Turn this into std "sort-by" function in functions.php
-        for($i = 0; $i < sizeof($arrNewImages) - 1; $i++) {
-            for($j = 0; $j < sizeof($arrNewImages) - 1; $j++) {
-                if((int)$arrNewImages[$j]->menu_order > (int)$arrNewImages[$j + 1]->menu_order) {
-                    $oTemp = $arrNewImages[$j];
-                    $arrNewImages[$j] = $arrNewImages[$j + 1];
-                    $arrNewImages[$j + 1] = $oTemp;
-                }
-            }
-        }
- 
-        // Reset arrKeys array
-        $arrKeys = array();
- 
-        // Replace arrKeys with newly sorted object ids
-        foreach($arrNewImages as $oNewImage) {
-            $arrKeys[] = $oNewImage->ID;
-        }
-        ******END BUBBLE SORT BY MENU ORDER**************/
- 
-
-                        
- 
-        // Print the image
-
-        
+        $arrKeys = array_keys($arrImages);    
     }
-
-
-
-
-
-
-
 ?>
-
-
-
-
-
-
-
-
-
-
-
+<!-- /WP Loopp -->
 
             <section id="contacto">
             <div id="foto-contacto" class="hidden">

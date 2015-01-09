@@ -1,7 +1,7 @@
 <?php
 
 //Theme image sizes
-add_theme_support( 'post-thumbnails', array( 'post', 'proyecto', 'marca', 'prensa' ) );
+add_theme_support( 'post-thumbnails', array( 'post', 'proyecto', 'marca', 'prensa', 'header' ) );
 add_image_size( 'Prensa', 600, 450, true );	
 add_image_size( 'Marca', 1000, 1000, true );	
 
@@ -86,13 +86,13 @@ add_action( 'init', 'register_my_menus' );
 // Custom Post Type Proyecto
 add_action( 'init', 'create_post_type' );
 function create_post_type() {
-  register_post_type( 'proyecto',
+  register_post_type( 'header',
     array(
       'taxonomies' => array('category'),
-      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt'),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail'),
       'labels' => array(
-        'name' => __( 'Proyectos' ),
-        'singular_name' => __( 'proyecto' )
+        'name' => __( 'Header' ),
+        'singular_name' => __( 'header' )
       ),
       'public' => true,
       'has_archive' => true,
@@ -106,6 +106,19 @@ function create_post_type() {
       'labels' => array(
         'name' => __( 'Marcas' ),
         'singular_name' => __( 'marca' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
+
+  register_post_type( 'proyecto',
+    array(
+      'taxonomies' => array('category'),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt'),
+      'labels' => array(
+        'name' => __( 'Proyectos' ),
+        'singular_name' => __( 'proyecto' )
       ),
       'public' => true,
       'has_archive' => true,
@@ -147,23 +160,28 @@ function my_admin_menu() {
 
 add_action( 'admin_init', 'my_admin_init' );
 function my_admin_init() {
-    register_setting( 'main-settings-group', 'header-option' );
-    register_setting( 'main-settings-group', 'description-option' );
 
-    register_setting( 'main-settings-group', 'city-option' );
-    register_setting( 'main-settings-group', 'tel1-option' );
-    register_setting( 'main-settings-group', 'tel2-option' );
-    register_setting( 'main-settings-group', 'email-option' );
+
 
     add_settings_section( 'home-section', 'Home', 'home_section_callback', 'menu-options' );
     add_settings_section( 'contact-section', 'Contacto', 'contact_section_callback', 'menu-options' );
 
+    register_setting( 'main-settings-group', 'header-option' );
     add_settings_field( 'field-one', 'Título', 'field_one_callback', 'menu-options', 'home-section' );
+
+    register_setting( 'main-settings-group', 'description-option' );
     add_settings_field( 'field-two', 'Descripción', 'field_two_callback', 'menu-options', 'home-section' );
 
+    register_setting( 'main-settings-group', 'city-option' );
     add_settings_field( 'field-three', 'Ciudad', 'field_three_callback', 'menu-options', 'contact-section' );
+
+    register_setting( 'main-settings-group', 'tel1-option' );
     add_settings_field( 'field-four', 'Teléfono 1', 'field_four_callback', 'menu-options', 'contact-section' );
+
+    register_setting( 'main-settings-group', 'tel2-option' );
     add_settings_field( 'field-five', 'Teléfono 2', 'field_five_callback', 'menu-options', 'contact-section' );
+
+    register_setting( 'main-settings-group', 'email-option' );
     add_settings_field( 'field-six', 'Mail de contacto', 'field_six_callback', 'menu-options', 'contact-section' );
 }
 
@@ -181,29 +199,29 @@ function field_one_callback() {
 }
 
 function field_two_callback() {
-    $setting2 = esc_attr( get_option( 'description-option' ) );
+    $setting = esc_attr( get_option( 'description-option' ) );
     //echo "<input type='text' name='description-option' value='$setting2' />";
-     echo '<textarea id="description_option" name="description-option" rows="5" cols="50">' . get_option( 'description-option' ) . '</textarea>';
+     echo '<textarea id="description_option" name="description-option" rows="5" cols="50">' . $setting . '</textarea>';
 }
 
 function field_three_callback() {
-    $setting3 = esc_attr( get_option( 'city-option' ) );
-    echo "<input type='text' name='city-option' value='$setting3' />";
+    $setting = esc_attr( get_option( 'city-option' ) );
+    echo "<input type='text' name='city-option' value='$setting' />";
 }
 
 function field_four_callback() {
-    $setting4 = esc_attr( get_option( 'tel1-option' ) );
-    echo "<input type='text' name='tel1-option' value='$setting4' />";
+    $setting = esc_attr( get_option( 'tel1-option' ) );
+    echo "<input type='text' name='tel1-option' value='$setting' />";
 }
 
 function field_five_callback() {
-    $setting5 = esc_attr( get_option( 'tel2-option' ) );
-    echo "<input type='text' name='tel2-option' value='$setting5' />";
+    $setting = esc_attr( get_option( 'tel2-option' ) );
+    echo "<input type='text' name='tel2-option' value='$setting' />";
 }
 
 function field_six_callback() {
-    $setting6 = esc_attr( get_option( 'email-option' ) );
-    echo "<input type='text' name='email-option' value='$setting6' />";
+    $setting = esc_attr( get_option( 'email-option' ) );
+    echo "<input type='text' name='email-option' value='$setting' />";
 }
 
 
