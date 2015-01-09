@@ -87,6 +87,38 @@
 
         </section><!-- /.Intro -->
 
+        <!-- WP Loop -->
+        <?php
+            $query = new WP_Query( 
+              array( 
+                'post_type' => 'header', 
+                'posts_per_page' => -1,
+                'fields' => 'ids'
+              ) 
+            );
+            $image_query = new WP_Query( 
+              array( 
+                'post_type' => 'attachment', 
+                'post_status' => 'inherit', 
+                'post_mime_type' => 'image', 
+                'posts_per_page' => -1, 
+                'post_parent__in' => $query->posts, 
+                'order' => 'DESC' 
+              ) 
+            );
+
+            $i = 0;
+            $arrayURL = array();
+                if( $image_query->have_posts() ){
+                  while( $image_query->have_posts() ) {
+                      $image_query->the_post();
+                      $imgurl = wp_get_attachment_url( get_the_ID() );
+                      $arrayURL[] = $imgurl;
+                  }
+                }
+        ?>
+
+
         <!-- Marcas -->
         <section id="marcas">
             
@@ -312,17 +344,27 @@
         ?>
 
 
-        <script type="text/javascript">
+            <script type="text/javascript">
+             $( document ).ready(function() {
+                //Start Slideshow
+                $("#foto-intro").backstretch([
+                    <?php 
+                        for($k=0; $k < sizeof($arrayURL) -1; $k++){
 
-            //Start Slideshow
-            $("#foto-intro").backstretch([
-                "wp-content/themes/Starlicht/img/home-1.jpg",
-                "wp-content/themes/Starlicht/img/home-2.jpg",
-                "wp-content/themes/Starlicht/img/home-3.jpg",
-                "wp-content/themes/Starlicht/img/home-4.jpg"
-                ], {duration: 2000, fade: 750} );
+                            $sImgString = '"' . $arrayURL[$k] . '",';
+                            echo $sImgString;
+                        }
 
-        $(document).ready( function(){
+                        $iNum = $arrKeys[sizeof($arrayURL)-1];
+
+                            $sImgString = '"' .$arrayURL[sizeof($arrayURL)-1].'"';
+                            echo $sImgString;
+
+
+                    ?>
+                        
+                    ], {duration: 2000, fade: 750} );
+                
             $('.fancybox').fancybox();
         } );
 
