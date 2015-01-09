@@ -89,121 +89,34 @@
 
         <!-- WP Loop -->
         <?php
-
-
-        $query = new WP_Query( 
-          array( 
-            'post_type' => 'header', 
-            'posts_per_page' => -1,
-            'fields' => 'ids'
-          ) 
-        );
-        $image_query = new WP_Query( 
-          array( 
-            'post_type' => 'attachment', 
-            'post_status' => 'inherit', 
-            'post_mime_type' => 'image', 
-            'posts_per_page' => -1, 
-            'post_parent__in' => $query->posts, 
-            'order' => 'DESC' 
-          ) 
-        );
-$i = 0;
-$arrayURL = array();
-        if( $image_query->have_posts() ){
-          while( $image_query->have_posts() ) {
-              $image_query->the_post();
-              $imgurl = wp_get_attachment_url( get_the_ID() );
-              $arrayURL[] = $imgurl;
-              echo $arrayURL[];
-          }
-        }
-
-
-
-/* -------------------------------------//
-            
-            $args = array(
-                 'posts_per_page' => 8,
-                 'orderby' => 'rand',
-                 'post_type' => array(
-                    'attachment',
-                    'header'
-                )
+            $query = new WP_Query( 
+              array( 
+                'post_type' => 'header', 
+                'posts_per_page' => -1,
+                'fields' => 'ids'
+              ) 
+            );
+            $image_query = new WP_Query( 
+              array( 
+                'post_type' => 'attachment', 
+                'post_status' => 'inherit', 
+                'post_mime_type' => 'image', 
+                'posts_per_page' => -1, 
+                'post_parent__in' => $query->posts, 
+                'order' => 'DESC' 
+              ) 
             );
 
-            $attachments = get_posts($args);
-
-
-            if ( $attachments ) {
-                    foreach ( $attachments as $post ) {
-                        setup_postdata( $post );
-                        the_title();
-                        the_attachment_link($post->ID, 'medium', true);
-
-                    }
-                    wp_reset_postdata();
-                }
-
-
-*/
-/*  ------------------------------------------------- //
-
-
-
-            $arrKeys;
-            $iNum;
-            $sImageUrl;
-            $sImgString;
-
-            $query = new WP_Query('post_type=header');
-            if($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-                $args = array(
-                    'post_type'      => 'header',
-                    'post_mime_type' => 'image',
-                    'post_parent'    => $post->ID,
-                    'numberposts'    => 10,
-                );
-
-                
-                // Build the <img> string
-
-                //echo $sImageUrl; 
-                /*if ($attachments) {
-                foreach ($attachments as $attachment) {
-                $urlImg = array( wp_get_attachment_url( $attachment->ID, true ));
-                
-
-        endwhile;
-        endif;
-*/
-        ?>
-
-
-<!--
-            $arrKeys;
-            $iNum;
-            $sImageUrl;
-            $sImgString;
-
-                // Get the post ID
-                $iPostID = $post->ID;
-             
-                // Get images for this post
-                $arrImages =& get_posts('post_type=attachment&post_mime_type=image&post_parent=' . $iPostID );
-             
-                // If images exist for this page
-                if($arrImages) {
-             
-                    // Get array keys representing attached image numbers
-                    $arrKeys = array_keys($arrImages);    
+            $i = 0;
+            $arrayURL = array();
+                if( $image_query->have_posts() ){
+                  while( $image_query->have_posts() ) {
+                      $image_query->the_post();
+                      $imgurl = wp_get_attachment_url( get_the_ID() );
+                      $arrayURL[] = $imgurl;
+                  }
                 }
         ?>
-
-        -->
-
-        <!-- /WP Loopp -->
-
 
 
         <!-- Marcas -->
@@ -438,14 +351,15 @@ $arrayURL = array();
                     <?php 
                         for($k=0; $k < sizeof($arrayURL) -1; $k++){
 
-                            $sImgString = '"' . $arrayURL[k] . '",';
+                            $sImgString = '"' . $arrayURL[$k] . '",';
                             echo $sImgString;
                         }
 
                         $iNum = $arrKeys[sizeof($arrayURL)-1];
 
-                            $sImgString = '"' . $arrayURL[k] . '",';
+                            $sImgString = '"' .$arrayURL[sizeof($arrayURL)-1].'"';
                             echo $sImgString;
+
 
                     ?>
                         
