@@ -40,20 +40,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a id="logo-nav" class="navbar-brand" href=""<?php bloginfo( 'url' ); ?>""><img src="<?php echo get_template_directory_uri(); ?>/img/logo-horizontal.svg" class="img-responsive"></a>
+              <a id="logo-nav" class="navbar-brand" href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/logo-horizontal.svg" class="img-responsive"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
-            <!-- //<?php wp_nav_menu( array( 'theme_location' => 'main-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?> -->
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php bloginfo( 'url' ); ?>/#intro">QUIÉNES SOMOS</a></li>
-                <li><a href="<?php bloginfo( 'url' ); ?>/#marcas">MARCAS</a></li>
-                <li id="proyectos-link"><a href="<?php bloginfo( 'url' ); ?>/#proyectos">PROYECTOS</a></li>
-                <li><a href="<?php bloginfo( 'url' ); ?>/#prensa">PRENSA</a></li>
-                <li><a href="<?php bloginfo( 'url' ); ?>/#contacto">CONTACTO</a></li>
-              </ul>
+                <?php wp_nav_menu( array( 'theme_location' => 'main-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav><!-- /.Navbar -->

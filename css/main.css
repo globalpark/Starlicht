@@ -121,6 +121,7 @@
 #main-nav .navbar-nav > li > a{
 	color: #808284;
 	border-bottom: 2px solid #fff;
+	text-transform: uppercase;
 }
 
 #main-nav .navbar-nav > li > a:hover{
@@ -170,6 +171,7 @@
 
 #titulo-quienes h1{
 	font-size: 55px;
+	text-transform: uppercase;
 }
 
 #texto-quienes{
@@ -396,6 +398,31 @@
 #next {
 	float: right;
 }
+
+/* ==========================================================================
+   Prensa
+   ========================================================================== */
+
+   #prensa{
+   	color: #808284;
+   }
+
+   #titulo-prensa{
+   	padding-top: 30px;
+   	padding-bottom: 30px;
+   }
+
+   #prensa h1{
+   	font-weight: thin;
+   	text-transform: uppercase;
+   }
+
+   #prensa .container-fluid{
+   	padding-left: 0px;
+   	padding-right: 0px;
+   }
+
+
 
 /* ==========================================================================
    Contacto

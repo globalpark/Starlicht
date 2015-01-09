@@ -1,7 +1,7 @@
 <?php
 
-
-add_theme_support( 'post-thumbnails', array( 'post', 'proyecto' ) );
+//Theme image sizes
+add_theme_support( 'post-thumbnails', array( 'post', 'proyecto', 'marca', 'prensa' ) );
 add_image_size( 'Prensa', 600, 450, true );	
 add_image_size( 'Marca', 1000, 1000, true );	
 
@@ -19,14 +19,11 @@ function bootstrap_responsive_images( $html ){
   $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
   return $html;
 }
-
 add_filter( 'the_content','bootstrap_responsive_images',10 );
 add_filter( 'post_thumbnail_html', 'bootstrap_responsive_images', 10 );
 
 
-function wpbootstrap_scripts_with_jquery()
-
-{
+function wpbootstrap_scripts_with_jquery(){
 	// Register the script like this for a theme:
 	wp_register_script( 'modernizr', get_template_directory_uri() . '/js/vendor/modernizr-2.6.2.min.js', array( 'jquery' ) );
 	wp_register_script( 'jQuery', get_template_directory_uri() . '/js/vendor/jquery-1.11.1.min.js', array( 'jquery' ) );
@@ -34,15 +31,12 @@ function wpbootstrap_scripts_with_jquery()
 	wp_enqueue_script( 'modernizr' );
 	wp_enqueue_script( 'jQuery' );
 }
-
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 
 
 
 
-  function wpstarlicht_scripts()
-{
-
+function wpstarlicht_scripts(){
 	wp_register_script( 'jquery', get_template_directory_uri() . '/js/vendor/jquery-1.11.1.min.js', array() );
 	wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array() );
 	wp_register_script( 'backstretch', get_template_directory_uri() . '/js/vendor/jquery.backstretch.js', array() );
@@ -60,18 +54,11 @@ add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 	wp_enqueue_script( 'stickUp' );
 	wp_enqueue_script( 'fancybox' );
 	wp_enqueue_script( 'main' );
-	
 }
-
 add_action( 'wp_footer', 'wpstarlicht_scripts');
 
 
-
-
-
-  function wpstarlicht_basic_scripts()
-{
-
+function wpstarlicht_basic_scripts(){
   wp_register_script( 'jquery', get_template_directory_uri() . '/js/vendor/jquery-1.11.1.min.js', array() );
   wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array() );
   wp_register_script( 'backstretch', get_template_directory_uri() . '/js/vendor/jquery.backstretch.js', array() );
@@ -81,17 +68,14 @@ add_action( 'wp_footer', 'wpstarlicht_scripts');
   wp_enqueue_script( 'backstretch' );
   
 }
-
 add_action( 'wp_footer', 'wpstarlicht_basic_scripts');
 
 
 // Menús //
-
 function register_my_menus() {
   register_nav_menus(
     array(
-      'main-menu' => __( 'Main Menu' ),
-      'secondary-menu' => __( 'Secondary Menu' )
+      'main-menu' => __( 'Main Menu' )
     )
   );
 }
@@ -100,16 +84,41 @@ add_action( 'init', 'register_my_menus' );
 
 
 // Custom Post Type Proyecto
-
 add_action( 'init', 'create_post_type' );
 function create_post_type() {
   register_post_type( 'proyecto',
     array(
       'taxonomies' => array('category'),
-      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt'),
       'labels' => array(
         'name' => __( 'Proyectos' ),
-        'singular_name' => __( 'Proyecto' )
+        'singular_name' => __( 'proyecto' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
+
+  register_post_type( 'marca',
+    array(
+      'taxonomies' => array('category'),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt'),
+      'labels' => array(
+        'name' => __( 'Marcas' ),
+        'singular_name' => __( 'marca' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
+
+  register_post_type( 'prensa',
+    array(
+      'taxonomies' => array('category'),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt'),
+      'labels' => array(
+        'name' => __( 'Prensa' ),
+        'singular_name' => __( 'prensa' )
       ),
       'public' => true,
       'has_archive' => true,
@@ -121,7 +130,6 @@ function create_post_type() {
 
 
 // Erase images from content
-
 add_filter('the_content', 'strip_images',2);
 
 function strip_images($content){
@@ -131,7 +139,6 @@ function strip_images($content){
 
 
 // Opciones (Settings API) //
-
 add_action( 'admin_menu', 'my_admin_menu' );
 function my_admin_menu() {
     add_options_page( 'Opciones', 'Opciones de Página', 'manage_options', 'menu-options', 'options_page' );
@@ -168,12 +175,6 @@ function contact_section_callback() {
     echo 'Escriba la información que aparecerá en el footer de la página principal.';
 }
 
-
-
-
-
-
-
 function field_one_callback() {
     $setting = esc_attr( get_option( 'header-option' ) );
     echo "<input type='text' name='header-option' value='$setting' />";
@@ -181,9 +182,9 @@ function field_one_callback() {
 
 function field_two_callback() {
     $setting2 = esc_attr( get_option( 'description-option' ) );
-    echo "<input type='text' name='description-option' value='$setting2' />";
+    //echo "<input type='text' name='description-option' value='$setting2' />";
+     echo '<textarea id="description_option" name="description-option" rows="5" cols="50">' . get_option( 'description-option' ) . '</textarea>';
 }
-
 
 function field_three_callback() {
     $setting3 = esc_attr( get_option( 'city-option' ) );
@@ -204,13 +205,6 @@ function field_six_callback() {
     $setting6 = esc_attr( get_option( 'email-option' ) );
     echo "<input type='text' name='email-option' value='$setting6' />";
 }
-
-
-
-
-
-
-
 
 
 function bdw_get_images() {
@@ -273,15 +267,6 @@ function bdw_get_images() {
 }
 
 
-
-
-
-
-
-
-
-
-
 function options_page() {
     ?>
     <div class="wrap">
@@ -294,11 +279,5 @@ function options_page() {
     </div>
     <?php
 }
-
-
-
-
-
-
 
 ?>
