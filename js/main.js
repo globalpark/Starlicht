@@ -39,6 +39,7 @@ function actualiza(){
 		$('#entrar').localScroll({ duration: 'slow', offset: 0});
 		$('#main-nav').localScroll({ duration: 'slow', offset: -94});
 		$('#proyectos-link').localScroll({ duration: 'slow', offset: -94});
+		$('#marcas').localScroll({ duration: 'slow', offset: -94});
 
 		//-----AJUSTES DE TAMAÑO (por si la cagué con algún ajuste) ----//
 		
