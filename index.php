@@ -233,7 +233,7 @@
                     <div class="container container-proyecto">
 
                         <!-- WP Query Proyectos -->
-                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-swareflex', 'posts_per_page' => 10 ); ?>
+                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-swareflex', 'posts_per_page' => -1 ); ?>
                         <?php $the_query2 = new WP_Query($args); ?>
                         <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
@@ -262,7 +262,7 @@
                     <div class="container container-proyecto">
 
                         <!-- WP Query Proyectos -->
-                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-bartenbach', 'posts_per_page' => 10 ); ?>
+                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-bartenbach', 'posts_per_page' => -1 ); ?>
                         <?php $the_query2 = new WP_Query($args); ?>
                         <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
@@ -291,7 +291,7 @@
                     <div class="container container-proyecto">
 
                         <!-- WP Query Proyectos -->
-                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-lts', 'posts_per_page' => 10 ); ?>
+                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-lts', 'posts_per_page' => -1 ); ?>
                         <?php $the_query2 = new WP_Query($args); ?>
                         <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
