@@ -19,6 +19,63 @@
         ?>
         <?php wp_head();?>
 
+        <?php
+
+        //response generation function
+
+        $response = "";
+
+        //function to generate response
+        function my_contact_form_generate_response($type, $message){
+
+          global $response;
+
+          if($type == "success") $response = "<div class='success'>{$message}</div>";
+          else $response = "<div class='error'>{$message}</div>";
+
+        }
+
+        //response messages
+        $missing_content = "Falta información.";
+        $email_invalid   = "Email no valido.";
+        $message_unsent  = "El mensaje no se pudo enviar. Intente de nuevo.";
+        $message_sent    = "¡Gracias! Tu mensaje se envió exitosamente.";
+
+        //user posted variables
+        $name = "Contacto Starlicht";
+        $email = $_POST['message_email'];
+        $message = "Responder a: " . $email;
+        $human = $_POST['message_human'];
+
+        //php mailer variables
+        $to = "info@starlicht.mx";
+        $subject = "Mensaje de contacto de starlicht.mx";
+        $headers = 'From: '. $email . "\r\n" .
+          'Reply-To: ' . $email . "\r\n";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+          $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+          if($sent) my_contact_form_generate_response("success", $message_sent); //message sent!
+          else my_contact_form_generate_response("error", $message_unsent); //message wasn't sent
+        }else if ($_POST['submitted']) my_contact_form_generate_response("error", $missing_content);
+
+      ?>
+
+
+      <style type="text/css">
+        .error{
+          padding: 5px 9px;
+          border: 1px solid red;
+          border-radius: 3px;
+        }
+       
+        .success{
+          padding: 5px 9px;
+          border: 1px solid green;
+          border-radius: 3px;
+        }
+      </style>
+
     </head>
     <body data-spy="scroll" data-target="#main-nav" data-offset="104" onload="actualiza()">
         <!--[if lt IE 7]>
@@ -103,7 +160,7 @@
                 'post_mime_type' => 'image', 
                 'posts_per_page' => -1, 
                 'post_parent__in' => $query->posts, 
-                'order' => 'DESC' 
+                'order' => 'ASC' 
               ) 
             );
 
@@ -144,7 +201,7 @@
                             </div>
                             <div class="texto-marca hidden">
                                 <?php the_content(); ?>
-                                <a href="#" class="">Ver Proyectos</a>
+                                <a href="#proyectos" class="">Ver Proyectos</a>
                             </div>
                         </div>
                     </div>
@@ -311,9 +368,10 @@
                 </div>
 
                 <div id="contacto-form" class="col-sm-6 col-sm-offset-3 col-xs-12">
+                    <?php echo $response; ?>
                     <form action="<?php the_permalink(); ?>" method="post">
                         <div class="input-group input-group-lg">
-                            <input id="email" type="text" name="message_email" value="" placeholder="email" class="form-control">
+                            <input id="email" type="text" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>" placeholder="email" class="form-control">
                             <input type="hidden" name="submitted" value="1">
                             <span class="input-group-btn">
                                 <button  id="search-btn" type="submit" class="btn btn-primary"><i class="fa fa-angle-right"></i></button>
@@ -329,7 +387,7 @@
                     <h3 class="center m-top40"><?php echo get_option( 'city-option' ); ?></h3>
                     <h3 class="center m-top40"><?php echo get_option( 'tel1-option' ); ?></h3>
                     <h3 class="center"><?php echo get_option( 'tel2-option' ); ?></h3>
-                    <a href="mailto:info@starlichtmexico.com"><h3 class="center m-top40 thin"><?php echo get_option( 'email-option' ); ?></h3></a>
+                    <a href="mailto:<?php echo get_option( 'email-option' ); ?>"><h3 class="center m-top40 thin"><?php echo get_option( 'email-option' ); ?></h3></a>
                 </div>
 
             </div>
