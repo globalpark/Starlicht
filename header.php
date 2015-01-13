@@ -46,7 +46,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <?php wp_nav_menu( array( 'theme_location' => 'main-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'page-menu','container_class' => 'menu', 'menu_class' => 'nav navbar-nav navbar-right' ) ); ?>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav><!-- /.Navbar -->

@@ -75,7 +75,8 @@ add_action( 'wp_footer', 'wpstarlicht_basic_scripts');
 function register_my_menus() {
   register_nav_menus(
     array(
-      'main-menu' => __( 'Main Menu' )
+      'main-menu' => __( 'Main Menu' ),
+      'page-menu' => __( 'Page Menu' )
     )
   );
 }
