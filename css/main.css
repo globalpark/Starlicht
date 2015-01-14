@@ -322,16 +322,15 @@
 }
 
 .nombre-proyecto:hover {
-
-	
-	
 }
 
 .container-proyecto-p {
-	
 	padding: 100px 30px 100px 30px;
 	margin-bottom: 0px;
+}
 
+.container-proyecto-p > p{
+	margin-bottom: 0px;
 }
 
 .foto-proyecto{

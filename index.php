@@ -243,7 +243,7 @@
                         $thumb_url = $thumb_url_array[0];
                         ?>
 
-                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3">
+                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3 col-xs-6">
                             <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
                                 <div class="container-proyecto-p">
                                     <p><?php the_title(); ?></p>
@@ -272,7 +272,7 @@
                         $thumb_url = $thumb_url_array[0];
                         ?>
 
-                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3">
+                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3 col-xs-6">
                             <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
                                 <div class="container-proyecto-p">
                                     <p><?php the_title(); ?></p>
@@ -301,7 +301,7 @@
                         $thumb_url = $thumb_url_array[0];
                         ?>
 
-                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3">
+                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3 col-xs-6">
                             <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
                                 <div class="container-proyecto-p">
                                     <p><?php the_title(); ?></p>

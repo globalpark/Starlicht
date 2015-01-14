@@ -1,7 +1,14 @@
-flag = 0;
+$(document).ready( function(){
+	actualiza();
+	proyectos();
+} );
+
+$(window).resize( function(){
+	actualiza();
+	proyectos();
+} );
 
 function actualiza(){
-	$(document).ready( function(){
 
 		width = $(window).width();
 		height = $(window).height();
@@ -23,23 +30,12 @@ function actualiza(){
 			$('#container-quienes').css("margin-top", ($('#foto-intro').height()) * .6 + "px")
 		}
 
-		//Ajusta título para pantallas MUY grandes
-		if(width > 1900){
-			$('#container-quienes').css("margin-right", "10%")
-		}
-
 		//Overlay con el texto de las marcas.
 		$('.marca').mouseenter( function(){
 			$(this).children().children('.texto-marca').removeClass('hidden');
 		}).mouseleave( function(){
 			$(this).children().children('.texto-marca').addClass('hidden');
 		});
-
-		//Enable Local Scroll
-		$('#entrar').localScroll({ duration: 'slow', offset: 0});
-		$('#main-nav').localScroll({ duration: 'slow', offset: -94});
-		$('#proyectos-link').localScroll({ duration: 'slow', offset: -94});
-		$('#marcas').localScroll({ duration: 'slow', offset: -94});
 
 		//-----AJUSTES DE TAMAÑO (por si la cagué con algún ajuste) ----//
 		
@@ -49,29 +45,30 @@ function actualiza(){
 			$('#foto-intro').height( $('#container-quienes').height()*1.2 );
 		}
 
-		//if( $('.proyecto').height() < $('.titulo-proyecto').height() ){
-		//	$('.proyecto').height( $('.titulo-proyecto').height()*1.2 );
-		//}
-
 		if( ($('.texto-marca').height() + $('.titulo-marca').height()) > $('.marca').height() ){
 			$('.marca').height( $('.titulo-marca').height() + $('.texto-marca').height() );
 		}else{
 			$('.texto-marca').height( ( $('.marca').height() - $('.titulo-marca').height() ) );
 		}
 		
-	} );
+		//Enable Local Scroll
+		$('#entrar').localScroll({ duration: 'slow', offset: 0});
+		$('#main-nav').localScroll({ duration: 'slow', offset: -94});
+		$('#proyectos-link').localScroll({ duration: 'slow', offset: -94});
+		$('#marcas').localScroll({ duration: 'slow', offset: -94});
 }
 
-$(document).on('scroll', function(){
-});
+function proyectos(){
+	var arr = $('.container-proyecto-p');
 
-$(document).ready( function(){
-	actualiza();
-} );
+	for (var i = 0; i <= arr.length; i++) {
+		var elemWidth = $(arr[i]).width();
+		var childHeight = $(arr[i]).children().height();
 
-$(window).resize( function(){
-	actualiza();
-} );
+		$(arr[i]).css("padding-top", (elemWidth - childHeight) / 2 + "px" );
+		$(arr[i]).css("padding-bottom", (elemWidth - childHeight) / 2 + "px" );
+	};
+}
 
 jQuery(function($) {
 	$(document).ready( function() {
