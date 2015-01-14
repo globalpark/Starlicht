@@ -92,7 +92,7 @@ function create_post_type() {
       'taxonomies' => array('category'),
       'supports' => array( 'title', 'editor', 'author', 'thumbnail'),
       'labels' => array(
-        'name' => __( 'Header' ),
+        'name' => __( 'Quiénes Somos' ),
         'singular_name' => __( 'header' )
       ),
       'public' => true,
