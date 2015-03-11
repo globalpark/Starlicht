@@ -222,7 +222,6 @@
                     <ul id="proyectos-nav" class="nav nav-pills nav-justified" role="tablist">
                         <li class="active"><a href="#p-swareflex" role="tab" data-toggle="tab">SWAREFLEX</a></li>
                         <li><a href="#p-lts" role="tab" data-toggle="tab">LTS</a></li>
-                        <li><a href="#p-bartenbach" role="tab" data-toggle="tab">BARTENBACH</a></li>
                     </ul>
                 </div>
             </div>
@@ -234,35 +233,6 @@
 
                         <!-- WP Query Proyectos -->
                         <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-swareflex', 'posts_per_page' => -1 ); ?>
-                        <?php $the_query2 = new WP_Query($args); ?>
-                        <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
-
-                        <?php
-                        $thumb_id = get_post_thumbnail_id();
-                        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'Marca', true);
-                        $thumb_url = $thumb_url_array[0];
-                        ?>
-
-                        <a href=<?php the_permalink(); ?>><div class="proyecto-individual col-sm-3 col-xs-6">
-                            <div class="nombre-proyecto" style="background-image: url(<?php echo $thumb_url ?>)" >
-                                <div class="container-proyecto-p">
-                                    <p><?php the_title(); ?></p>
-                                </div>
-                            </div>
-                        </div></a>
-
-                        <?php endwhile; ?>
-                        <?php endif; ?>
-                        <?php wp_reset_query(); ?>
-
-                    </div>
-                </div>
-
-                <div class="tab-pane fade proyecto" id="p-bartenbach">
-                    <div class="container container-proyecto">
-
-                        <!-- WP Query Proyectos -->
-                        <?php $args = array( 'post_type' => 'proyecto','category_name' => 'proyecto-bartenbach', 'posts_per_page' => -1 ); ?>
                         <?php $the_query2 = new WP_Query($args); ?>
                         <?php if ($the_query2->have_posts()) : while ($the_query2->have_posts()) : $the_query2->the_post(); ?>
 
